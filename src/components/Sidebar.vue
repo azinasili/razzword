@@ -1,16 +1,17 @@
 <template>
 <aside class="sidebar">
   <p>{{msg}}</p>
+  <pw-options></pw-options>
 </aside>
 </template>
 
 <script>
+import PWoptions from './PWoptions';
+
 export default {
   name: 'sidebar',
-  data() {
-    return {
-      msg: 'Sidebar',
-    };
+  components: {
+    'pw-options': PWoptions,
   },
 };
 </script>

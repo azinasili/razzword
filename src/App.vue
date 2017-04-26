@@ -8,14 +8,14 @@
 
 <script>
 import Titlebar from './components/Titlebar';
-import pwContent from './components/Content';
+import PWcontent from './components/Content';
 import Sidebar from './components/Sidebar';
 
 export default {
   name: 'app',
   components: {
     Titlebar,
-    pwContent,
+    'pw-content': PWcontent,
     Sidebar,
   },
 };
