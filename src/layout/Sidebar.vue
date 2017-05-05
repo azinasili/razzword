@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import PWoptions from './PWoptions';
+import PWoptions from '../components/PWoptions';
 
 export default {
   name: 'sidebar',
