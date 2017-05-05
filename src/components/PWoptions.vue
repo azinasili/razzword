@@ -2,30 +2,30 @@
 <form class="pw-options">
   <div>
     <p>
-      <input name="passwordLength" type="number" value="10" min="1" max="99">
-      <label for="passwordLength">Password length</label>
+      <input id="passwordLength" type="number" min="1" max="99" v-model="passwordLength">
+      <label for="passwordLength">Password length {{passwordLength}}</label>
     </p>
     <fieldset>
       <legend>Advanced Options</legend>
       <p>
-        <input name="uppercase" type="checkbox" checked>
-        <label for="uppercase">A-Z</label>
+        <input id="uppercase" type="checkbox" v-model="uppercase">
+        <label for="uppercase">A-Z {{uppercase}}</label>
       </p>
       <p>
-        <input name="lowercase" type="checkbox">
-        <label for="lowercase">a-z</label>
+        <input id="lowercase" type="checkbox" v-model="lowercase">
+        <label for="lowercase">a-z {{lowercase}}</label>
       </p>
       <p>
-        <input name="numbers" type="checkbox">
-        <label for="numbers">0-9</label>
+        <input id="numbers" type="checkbox" v-model="numbers">
+        <label for="numbers">0-9 {{numbers}}</label>
       </p>
       <p>
-        <input name="symbols" type="checkbox">
-        <label for="symbols">!%@#</label>
+        <input id="symbols" type="checkbox" v-model="symbols">
+        <label for="symbols">!%@# {{symbols}}</label>
       </p>
       <p>
-        <input name="numberLength" type="number" value="10" min="1" max="99">
-        <span class="input-label">Minimum Numeric Characters</span>
+        <input id="numberLength" type="number" min="1" v-bind:max="passwordLength" v-model="numberLength">
+        <span class="input-label">Minimum Numeric Characters {{numberLength}}</span>
       </p>
     </fieldset>
   </div>
@@ -33,8 +33,21 @@
 </template>
 
 <script>
+import store from '../store';
+
 export default {
-  name: 'pw-optiions',
+  name: 'pw-options',
+  data() {
+    return {
+      sharedStore: store,
+      passwordLength: 10,
+      uppercase: true,
+      lowercase: false,
+      numbers: false,
+      symbols: false,
+      numberLength: 5,
+    };
+  },
 };
 </script>
 
