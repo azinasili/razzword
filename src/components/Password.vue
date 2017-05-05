@@ -5,10 +5,13 @@
 </template>
 
 <script>
+import store from '../store';
+
 export default {
   name: 'password',
   data() {
     return {
+      sharedStore: store,
       passwordLength: 20,
       password: [],
       capital: [
