@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import Titlebar from './components/Titlebar';
-import PWcontent from './components/Content';
-import Sidebar from './components/Sidebar';
+import Titlebar from './layout/Titlebar';
+import PWcontent from './layout/Content';
+import Sidebar from './layout/Sidebar';
 
 export default {
   name: 'app',

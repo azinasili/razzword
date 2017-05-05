@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Password from './Password';
+import Password from '../components/Password';
 
 export default {
   name: 'main-content',
