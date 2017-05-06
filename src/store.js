@@ -1,5 +1,5 @@
 export default {
-  debug: true,
+  debug: false,
   state: {
     passwordLength: 10,
     uppercase: true,
@@ -8,12 +8,8 @@ export default {
     symbols: false,
     numberLength: 5,
   },
-  // setMessageAction(newValue) {
-  //   this.debug && console.log('setMessageAction triggered with', newValue)
-  //   this.state.message = newValue
-  // },
-  // clearMessageAction() {
-  //   this.debug && console.log('clearMessageAction triggered')
-  //   this.state.message = ''
-  // },
+  setPasswordLength(length) {
+    if (this.debug) console.log('setMessageAction triggered with', length);
+    this.state.passwordLength = length;
+  },
 };

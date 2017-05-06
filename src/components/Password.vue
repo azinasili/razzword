@@ -11,8 +11,7 @@ export default {
   name: 'password',
   data() {
     return {
-      sharedStore: store,
-      passwordLength: 20,
+      sharedStore: store.state,
       password: [],
       capital: [
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
@@ -43,7 +42,7 @@ export default {
   },
   computed: {
     generatePassword() {
-      for (let i = 0; i < this.passwordLength; i += 1) {
+      for (let i = 0; i < this.sharedStore.passwordLength; i += 1) {
         const getCharacter = Math.floor(Math.random() * this.possibleCharacters.length);
         this.password.push(this.possibleCharacters[getCharacter]);
       }
