@@ -1,6 +1,9 @@
 <template>
 <div class="password">
   {{generatePassword}}
+  <p>
+    {{this.password.length}}
+  </p>
 </div>
 </template>
 
@@ -42,14 +45,16 @@ export default {
   },
   computed: {
     generatePassword() {
+      const newPassword = [];
+
       for (let i = 0; i < this.sharedStore.passwordLength; i += 1) {
         const getCharacter = Math.floor(Math.random() * this.possibleCharacters.length);
-        this.password.push(this.possibleCharacters[getCharacter]);
+        newPassword.push(this.possibleCharacters[getCharacter]);
       }
 
-      const newPassword = this.password.join('');
+      this.password = newPassword.join('');
 
-      return newPassword;
+      return this.password;
     },
   },
 };
