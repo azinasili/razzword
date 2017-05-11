@@ -1,6 +1,9 @@
 <template>
 <div class="password">
-  {{generatePassword}}
+  {{this.password}}
+  <p>
+    <button v-on:click="newPassword">New password</button>
+  </p>
   <p>
     {{this.password.length}}
   </p>
@@ -32,20 +35,20 @@ export default {
         '+', '[', '{', ']', '}', '\\', '|', ';', ':', '\'', '"', ',', '<', '.', '>',
         '/', '?',
       ],
-      possibleCharacters: [],
-      // possibleCharacters: [
-      //   'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
-      //   'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd',
-      //   'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-      //   't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7',
-      //   '8', '9', '`', '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-',
-      //   '_', '=', '+', '[', '{', ']', '}', '\\', '|', ';', ':', '\'', '"', ',',
-      //   '<', '.', '>', '/', '?',
-      // ],
+      // possibleCharacters: [],
+      possibleCharacters: [
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
+        'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd',
+        'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+        't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7',
+        '8', '9', '`', '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-',
+        '_', '=', '+', '[', '{', ']', '}', '\\', '|', ';', ':', '\'', '"', ',',
+        '<', '.', '>', '/', '?',
+      ],
     };
   },
-  computed: {
-    generatePassword() {
+  methods: {
+    newPassword() {
       const newPassword = [];
 
       for (let i = 0; i < this.sharedStore.passwordLength; i += 1) {
@@ -54,22 +57,10 @@ export default {
       }
 
       this.password = newPassword.join('');
-
-      return this.password;
     },
   },
-  updated() {
-  // Unsure of lifecycle method
-    const possibleCharacters = [];
-
-    // This does not work too great
-    if (this.sharedStore.uppercase) possibleCharacters.push(...this.uppercase);
-    if (this.sharedStore.lowercase) possibleCharacters.push(...this.lowercase);
-    if (this.sharedStore.symbols) possibleCharacters.push(...this.lowercase);
-
-    // Need to add numbers
-
-    this.possibleCharacters = possibleCharacters;
+  mounted() {
+    this.newPassword();
   },
 };
 </script>
