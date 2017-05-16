@@ -7,6 +7,12 @@
   <p>
     {{this.password.length}}
   </p>
+  <p>
+    {{buildArray}}
+  </p>
+  <p>
+    {{this.possibleCharacters}}
+  </p>
 </div>
 </template>
 
@@ -47,6 +53,21 @@ export default {
       // ],
     };
   },
+  computed: {
+    buildArray() {
+      // const x = [];
+
+      if (this.sharedStore.uppercase) {
+        this.possibleCharacters = [...this.possibleCharacters, ...this.uppercase];
+      }
+
+      if (this.sharedStore.lowercase) {
+        this.possibleCharacters = [...this.possibleCharacters, ...this.lowercase];
+      }
+
+      return this.possibleCharacters;
+    },
+  },
   methods: {
     newPassword() {
       const newPassword = [];
@@ -59,9 +80,15 @@ export default {
       this.password = newPassword.join('');
     },
   },
-  created() {
-    if (this.sharedStore.uppercase) this.possibleCharacters.push(...this.uppercase);
-  },
+  // created() {
+  //   if (this.sharedStore.uppercase) {
+  //     this.possibleCharacters = [...this.possibleCharacters, ...this.uppercase];
+  //   }
+
+  //   if (this.sharedStore.lowercase) {
+  //     this.possibleCharacters = [...this.possibleCharacters, ...this.lowercase];
+  //   }
+  // },
   mounted() {
     this.newPassword();
   },
