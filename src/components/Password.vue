@@ -1,17 +1,17 @@
 <template>
 <div class="password">
-  {{this.password}}
+  {{this.sharedStore.password}}
   <p>
     <button v-on:click="newPassword">New password</button>
   </p>
   <p>
-    {{this.password.length}}
+    {{this.sharedStore.password.length}}
   </p>
   <p>
     {{buildArray}}
   </p>
   <p>
-    {{this.possibleCharacters}}
+    {{this.sharedStore.passwordBank}}
   </p>
 </div>
 </template>
@@ -24,48 +24,11 @@ export default {
   data() {
     return {
       sharedStore: store.state,
-      password: [],
-      uppercase: [
-        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
-        'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-      ],
-      lowercase: [
-        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
-        'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-      ],
-      numbers: [
-        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-      ],
-      specialCharacters: [
-        '`', '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=',
-        '+', '[', '{', ']', '}', '\\', '|', ';', ':', '\'', '"', ',', '<', '.', '>',
-        '/', '?',
-      ],
-      possibleCharacters: [],
-      // possibleCharacters: [
-      //   'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
-      //   'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd',
-      //   'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-      //   't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7',
-      //   '8', '9', '`', '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-',
-      //   '_', '=', '+', '[', '{', ']', '}', '\\', '|', ';', ':', '\'', '"', ',',
-      //   '<', '.', '>', '/', '?',
-      // ],
     };
   },
   computed: {
     buildArray() {
-      // const x = [];
-
-      if (this.sharedStore.uppercase) {
-        this.possibleCharacters = [...this.possibleCharacters, ...this.uppercase];
-      }
-
-      if (this.sharedStore.lowercase) {
-        this.possibleCharacters = [...this.possibleCharacters, ...this.lowercase];
-      }
-
-      return this.possibleCharacters;
+      return store.newPasswordArray(this.sharedStore.passwordBank);
     },
   },
   methods: {
@@ -73,22 +36,13 @@ export default {
       const newPassword = [];
 
       for (let i = 0; i < this.sharedStore.passwordLength; i += 1) {
-        const getCharacter = Math.floor(Math.random() * this.possibleCharacters.length);
-        newPassword.push(this.possibleCharacters[getCharacter]);
+        const getCharacter = Math.floor(Math.random() * this.sharedStore.passwordBank.length);
+        newPassword.push(this.sharedStore.passwordBank[getCharacter]);
       }
 
-      this.password = newPassword.join('');
+      this.sharedStore.password = newPassword.join('');
     },
   },
-  // created() {
-  //   if (this.sharedStore.uppercase) {
-  //     this.possibleCharacters = [...this.possibleCharacters, ...this.uppercase];
-  //   }
-
-  //   if (this.sharedStore.lowercase) {
-  //     this.possibleCharacters = [...this.possibleCharacters, ...this.lowercase];
-  //   }
-  // },
   mounted() {
     this.newPassword();
   },

@@ -1,15 +1,48 @@
 export default {
   debug: false,
   state: {
+    password: [],
     passwordLength: 10,
     uppercase: true,
     lowercase: false,
     numbers: false,
     symbols: false,
     numberLength: 5,
+    passwordBank: [],
+    passwordCharacters: {
+      uppercase: [
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
+        'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+      ],
+      lowercase: [
+        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
+        'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+      ],
+      numbers: [
+        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+      ],
+      specialCharacters: [
+        '`', '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=',
+        '+', '[', '{', ']', '}', '\\', '|', ';', ':', '\'', '"', ',', '<', '.', '>',
+        '/', '?',
+      ],
+    },
   },
   setPasswordLength(length) {
-    if (this.debug) console.log('setMessageAction triggered with', length);
+    if (this.debug) console.log('setPasswordLength triggered with', length);
     this.state.passwordLength = length;
+  },
+  newPasswordArray(array) {
+    if (this.debug) console.log('newPasswordArray triggered with', array);
+
+    if (this.state.uppercase) {
+      this.state.passwordBank =
+        [...this.state.passwordBank, ...this.state.passwordCharacters.uppercase];
+    }
+
+    if (this.state.lowercase) {
+      this.state.passwordBank =
+        [...this.state.passwordBank, ...this.state.passwordCharacters.lowercase];
+    }
   },
 };
