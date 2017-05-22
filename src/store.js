@@ -21,7 +21,7 @@ export default {
       numbers: [
         '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
       ],
-      specialCharacters: [
+      symbols: [
         '`', '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=',
         '+', '[', '{', ']', '}', '\\', '|', ';', ':', '\'', '"', ',', '<', '.', '>',
         '/', '?',
@@ -35,6 +35,14 @@ export default {
   newPasswordArray(array) {
     if (this.debug) console.log('newPasswordArray triggered with', array);
 
+    const UPPERCASE = this.state.passwordCharacters.uppercase;
+    const LOWERCASE = this.state.passwordCharacters.lowercase;
+    const SPECIAL = this.state.passwordCharacters.symbols;
+
+    this.state.passwordBank = this.state.passwordBank.filter(el => UPPERCASE.indexOf(el) === -1);
+    this.state.passwordBank = this.state.passwordBank.filter(el => LOWERCASE.indexOf(el) === -1);
+    this.state.passwordBank = this.state.passwordBank.filter(el => SPECIAL.indexOf(el) === -1);
+
     if (this.state.uppercase) {
       this.state.passwordBank =
         [...this.state.passwordBank, ...this.state.passwordCharacters.uppercase];
@@ -43,6 +51,11 @@ export default {
     if (this.state.lowercase) {
       this.state.passwordBank =
         [...this.state.passwordBank, ...this.state.passwordCharacters.lowercase];
+    }
+
+    if (this.state.symbols) {
+      this.state.passwordBank =
+        [...this.state.passwordBank, ...this.state.passwordCharacters.symbols];
     }
   },
 };
