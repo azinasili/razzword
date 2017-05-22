@@ -1,6 +1,5 @@
 <template>
 <aside class="sidebar">
-  <p>{{msg}}</p>
   <pw-options></pw-options>
 </aside>
 </template>
