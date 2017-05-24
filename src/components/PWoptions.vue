@@ -57,9 +57,4 @@ export default {
 </script>
 
 <style lang="scss">
-.sidebar {
-  order: -1;
-  padding: 1em;
-  width: ((320px/16px) * 1em) // 20em
-}
 </style>
