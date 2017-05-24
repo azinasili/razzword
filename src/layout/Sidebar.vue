@@ -17,8 +17,19 @@ export default {
 
 <style lang="scss">
 .sidebar {
-  order: -1;
   padding: 1em;
-  width: ((320px/16px) * 1em) // 20em
+
+  @media (max-width: ((540px/16px) * 1em)) {
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translate3d(0, -100%, 0);
+    width: 100%;
+  }
+
+  @media (min-width: ((541px/16px) * 1em)) {
+    order: -1;
+    width: ((320px/16px) * 1em);
+  }
 }
 </style>
