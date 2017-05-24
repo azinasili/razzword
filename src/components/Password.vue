@@ -4,15 +4,6 @@
   <p>
     <button v-on:click="newPassword">New password</button>
   </p>
-  <p>
-    {{this.sharedStore.password.length}}
-  </p>
-  <p>
-    {{buildArray}}
-  </p>
-  <p>
-    {{this.sharedStore.passwordBank}}
-  </p>
 </div>
 </template>
 

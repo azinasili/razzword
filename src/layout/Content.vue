@@ -1,6 +1,5 @@
 <template>
 <div class="content">
-  <h2>{{sayHi}}</h2>
   <password></password>
 </div>
 </template>
@@ -12,11 +11,6 @@ export default {
   name: 'main-content',
   components: {
     Password,
-  },
-  data() {
-    return {
-      sayHi: 'Hello World!',
-    };
   },
 };
 </script>

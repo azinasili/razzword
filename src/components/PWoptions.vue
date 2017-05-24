@@ -3,29 +3,29 @@
   <div>
     <p>
       <input id="passwordLength" type="number" min="1" max="99" v-model="sharedStore.passwordLength">
-      <label for="passwordLength">Password length {{sharedStore.passwordLength}}</label>
+      <label for="passwordLength">Password length</label>
     </p>
     <fieldset>
       <legend>Advanced Options</legend>
       <p>
         <input id="uppercase" type="checkbox" v-model="sharedStore.uppercase">
-        <label for="uppercase">A-Z {{sharedStore.uppercase}}</label>
+        <label for="uppercase">A-Z</label>
       </p>
       <p>
         <input id="lowercase" type="checkbox" v-model="sharedStore.lowercase">
-        <label for="lowercase">a-z {{sharedStore.lowercase}}</label>
+        <label for="lowercase">a-z</label>
       </p>
       <p>
         <input id="numbers" type="checkbox" v-model="sharedStore.numbers">
-        <label for="numbers">0-9 {{sharedStore.numbers}}</label>
+        <label for="numbers">0-9</label>
       </p>
       <p>
         <input id="symbols" type="checkbox" v-model="sharedStore.symbols">
-        <label for="symbols">!%@# {{sharedStore.symbols}}</label>
+        <label for="symbols">!%@#</label>
       </p>
       <p>
         <input id="numberLength" type="number" min="1" v-bind:max="sharedStore.passwordLength" v-model="sharedStore.numberLength">
-        <span class="input-label">Minimum Numeric Characters {{sharedStore.numberLength}}</span>
+        <span class="input-label">Minimum Numeric Characters</span>
       </p>
     </fieldset>
   </div>
