@@ -1,9 +1,6 @@
 <template>
-<div class="password">
+<div id="password" class="password">
   {{this.sharedStore.password}}
-  <p>
-    <button v-on:click="newPassword">New password</button>
-  </p>
 </div>
 </template>
 
@@ -17,23 +14,14 @@ export default {
       sharedStore: store.state,
     };
   },
-  methods: {
-    newPassword() {
-      const newPassword = [];
-
-      for (let i = 0; i < this.sharedStore.passwordLength; i += 1) {
-        const getCharacter = Math.floor(Math.random() * this.sharedStore.passwordBank.length);
-        newPassword.push(this.sharedStore.passwordBank[getCharacter]);
-      }
-
-      this.sharedStore.password = newPassword.join('');
-    },
-  },
-  mounted() {
-    this.newPassword();
-  },
 };
 </script>
 
 <style lanf="scss">
+.password {
+  align-items: center;
+  display: flex;
+  flex: 1 0 0%;
+  justify-content: center;
+}
 </style>
