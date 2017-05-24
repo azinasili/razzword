@@ -1,5 +1,5 @@
 <template>
-<form class="pw-options">
+<form v-on:change="buildArray" class="pw-options">
   <div>
     <p>
       <input id="passwordLength" type="number" min="1" max="99" v-model="sharedStore.passwordLength">
@@ -46,6 +46,12 @@ export default {
     newPasswordLength() {
       return store.setPasswordLength(this.sharedStore.passwordLength);
     },
+    buildArray() {
+      return store.newPasswordArray(this.sharedStore.passwordBank);
+    },
+  },
+  beforeMount() {
+    this.buildArray();
   },
 };
 </script>

@@ -17,11 +17,6 @@ export default {
       sharedStore: store.state,
     };
   },
-  computed: {
-    buildArray() {
-      return store.newPasswordArray(this.sharedStore.passwordBank);
-    },
-  },
   methods: {
     newPassword() {
       const newPassword = [];
