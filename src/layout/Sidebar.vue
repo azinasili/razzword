@@ -17,6 +17,8 @@ export default {
 
 <style lang="scss">
 .sidebar {
+  color: #fff;
+  background: rgba(coral, .85);
   padding: 1em;
 
   @media (max-width: ((540px/16px) * 1em)) {
