@@ -1,18 +1,22 @@
 <template>
 <div class="button-bar">
   <button v-on:click="newPassword" class="btn btn-primary">New password</button>
+  <button id="copyPassword" class="btn btn-primary">Copy password</button>
 </div>
 </template>
 
 <script>
-import store from '../store';
 import Clipboard from 'clipboard';
+import store from '../store';
 
 export default {
   name: 'password',
   data() {
     return {
       sharedStore: store.state,
+      clipboard: new Clipboard('#copyPassword', {
+        target: () => document.getElementById('password'),
+      }),
     };
   },
   methods: {
@@ -29,6 +33,7 @@ export default {
   },
   mounted() {
     this.newPassword();
+    this.clipboard();
   },
 };
 </script>
@@ -37,6 +42,18 @@ export default {
 .button-bar {
   display: flex;
   justify-content: center;
+}
+
+.button-bar .btn {
+  flex: 0 1 0%;
+}
+
+.button-bar .btn:first-child {
+  flex-grow: 1;
+}
+
+.button-bar .btn:not(:last-child) {
+  margin-right: .75em;
 }
 
 .btn {
