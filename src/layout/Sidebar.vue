@@ -21,7 +21,7 @@ export default {
   background: rgba(coral, .85);
   padding: 1em;
 
-  @media (max-width: ((540px/16px) * 1em)) {
+  @media (max-width: ((740px/16px) * 1em)) {
     left: 0;
     position: absolute;
     top: 0;
@@ -29,7 +29,7 @@ export default {
     width: 100%;
   }
 
-  @media (min-width: ((541px/16px) * 1em)) {
+  @media (min-width: ((741px/16px) * 1em)) {
     order: -1;
     width: ((320px/16px) * 1em);
   }
