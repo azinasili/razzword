@@ -1,7 +1,8 @@
 <template>
 <div class="button-bar">
   <button v-on:click="newPassword" class="btn btn-primary">New password</button>
-  <button id="copyPassword" class="btn btn-primary">Copy password</button>
+  <button id="copyPassword" class="btn btn-primary"><i class="material-icons">content_copy</i></button>
+  <button v-on:click="addFavorite" class="btn btn-primary"><i class="material-icons">{{favorite}}</i></button>
 </div>
 </template>
 
@@ -14,10 +15,20 @@ export default {
   data() {
     return {
       sharedStore: store.state,
+      isFavorite: false,
       clipboard: new Clipboard('#copyPassword', {
         target: () => document.getElementById('password'),
       }),
     };
+  },
+  computed: {
+    favorite() {
+      if (this.isFavorite) {
+        return 'favorite';
+      }
+
+      return 'favorite_border';
+    },
   },
   methods: {
     newPassword() {
@@ -29,6 +40,9 @@ export default {
       }
 
       this.sharedStore.password = newPassword.join('');
+    },
+    addFavorite() {
+      this.isFavorite = !this.isFavorite;
     },
   },
   mounted() {
