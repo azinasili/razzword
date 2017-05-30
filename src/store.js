@@ -7,6 +7,7 @@ export default {
     lowercase: false,
     numbers: false,
     symbols: false,
+    favoritePasswords: [],
     numberLength: 5,
     passwordBank: [],
     passwordCharacters: {
