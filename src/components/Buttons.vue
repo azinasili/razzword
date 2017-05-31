@@ -59,7 +59,7 @@ export default {
 };
 </script>
 
-<style lanf="scss">
+<style lang="scss">
 .button-bar {
   display: flex;
   justify-content: center;
@@ -67,13 +67,13 @@ export default {
 
 .button-bar .btn {
   flex: 0 1 0%;
-}
 
-.button-bar .btn:first-child {
-  flex-grow: 1;
-}
+  &:first-child {
+    flex-grow: 1;
+  }
 
-.button-bar .btn:not(:last-child) {
-  margin-right: .75em;
+  &:not(:last-child) {
+    margin-right: .75em;
+  }
 }
 </style>
