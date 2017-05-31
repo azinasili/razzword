@@ -1,6 +1,6 @@
 <template>
-<div id="password" class="password">
-  <p class="password-content">{{this.sharedStore.password}}</p>
+<div class="password">
+  <p id="password" class="password-content">{{this.sharedStore.password}}</p>
   <div class="password-controls">
     <buttons></buttons>
   </div>
