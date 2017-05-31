@@ -76,25 +76,4 @@ export default {
 .button-bar .btn:not(:last-child) {
   margin-right: .75em;
 }
-
-.btn {
-  border: .0625em solid transparent;
-  border-radius: .25em;
-  display: inline-block;
-  font-size: 1em;
-  font-weight: 400;
-  line-height: 1.25;
-  padding: .5em 1em;
-  text-align: center;
-  transition: all .2s ease-in-out;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-}
-
-.btn-primary {
-  background-color: #0275d8;
-  border-color: #0275d8;
-  color: #fff;
-}
 </style>
