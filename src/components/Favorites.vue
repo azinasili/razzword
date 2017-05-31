@@ -6,14 +6,18 @@
   </div>
   <ul v-if="showHistory" class="favorites-list">
     <li v-for="password in sharedStore.favoritePasswords" class="favorites-item">
-      {{password}}
-      <button class="btn favorites-button"><i class="material-icons">delete</i></button>
+      <span class="js-favorite-password">{{password}}</span>
+      <div class="favorites-buttons">
+        <button class="btn favorites-button js-favorite-copy"><i class="material-icons">content_copy</i></button>
+        <button class="btn favorites-button favorites-button--danger"><i class="material-icons">delete</i></button>
+      </div>
     </li>
   </ul>
 </div>
 </template>
 
 <script>
+import Clipboard from 'clipboard';
 import store from '../store';
 
 export default {
@@ -22,6 +26,9 @@ export default {
     return {
       sharedStore: store.state,
       isFavoritesShown: false,
+      clipboard: new Clipboard('.js-favorite-copy', {
+        target: trigger => trigger.parentElement.parentElement.children[0],
+      }),
     };
   },
   computed: {
@@ -85,13 +92,16 @@ export default {
   pointer-events: auto;
 }
 
+.favorites-buttons {
+  margin-left: auto;
+}
+
 .favorites-button {
   background: none;
   border-radius: 50%;
   color: #333;
   font-size: 1.5em;
   height: 1.5em;
-  margin-left: auto;
   opacity: 0;
   padding: 0;
   pointer-events: none;
@@ -99,8 +109,13 @@ export default {
 
   &:hover,
   &:focus {
-    background: rgb(251, 105, 94);
+    background: rgb(53, 162, 113);
     color: #fff;
   }
+}
+
+.favorites-button--danger:hover,
+.favorites-button--danger:focus {
+  background: rgb(251, 105, 94);
 }
 </style>
