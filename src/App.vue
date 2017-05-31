@@ -38,4 +38,30 @@ body {
   flex-wrap: wrap;
   height: 100vh;
 }
+
+.btn {
+  border: .0625em solid transparent;
+  border-radius: .25em;
+  display: inline-block;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.25;
+  padding: .5em 1em;
+  text-align: center;
+  transition: all .175s ease-in-out;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  .material-icons {
+    display: block;
+    font-size: 1em;
+  }
+}
+
+.btn-primary {
+  background-color: #0275d8;
+  border-color: #0275d8;
+  color: #fff;
+}
 </style>
