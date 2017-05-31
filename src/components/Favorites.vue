@@ -89,7 +89,6 @@ export default {
   background: none;
   border-radius: 50%;
   color: #333;
-  cursor: pointer;
   font-size: 1.5em;
   height: 1.5em;
   margin-left: auto;
