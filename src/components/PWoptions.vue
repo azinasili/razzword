@@ -57,10 +57,10 @@ export default {
 <style lang="scss">
 .form-field {
   margin: 0;
-}
 
-.form-field:not(:last-child) {
-  margin-bottom: .5em;
+  &:not(:last-child) {
+    margin-bottom: .5em;
+  }
 }
 
 .form-fieldset {

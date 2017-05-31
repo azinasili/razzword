@@ -23,7 +23,7 @@ export default {
 
 <style lang="scss">
 html { box-sizing: border-box; height: 100%; }
-*, *::beore, *::after { box-sizing: inherit; }
+*, *::before, *::after { box-sizing: inherit; }
 body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

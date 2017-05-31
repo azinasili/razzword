@@ -17,7 +17,7 @@ export default {
 };
 </script>
 
-<style lanf="scss">
+<style lang="scss">
 .password {
   align-items: center;
   display: flex;
