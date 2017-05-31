@@ -1,21 +1,18 @@
 <template>
 <div class="content">
   <password></password>
-  <buttons></buttons>
   <favorites></favorites>
 </div>
 </template>
 
 <script>
 import Password from '../components/Password';
-import Buttons from '../components/Buttons';
 import Favorites from '../components/Favorites';
 
 export default {
   name: 'main-content',
   components: {
     Password,
-    Buttons,
     Favorites,
   },
 };
