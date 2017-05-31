@@ -1,8 +1,8 @@
 <template>
 <div class="button-bar">
-  <button v-on:click="newPassword" class="btn btn-primary">New password</button>
-  <button id="copyPassword" class="btn btn-primary"><i class="material-icons">content_copy</i></button>
-  <button v-on:click="addFavorite" class="btn btn-primary"><i class="material-icons">{{favorite}}</i></button>
+  <button v-on:click="newPassword" class="btn btn-clear btn--fade"><i class="material-icons">refresh</i></button>
+  <button id="copyPassword" class="btn btn-clear btn--fade"><i class="material-icons">content_copy</i></button>
+  <button v-on:click="addFavorite" class="btn btn-clear btn--fade"><i class="material-icons">{{favorite}}</i></button>
 </div>
 </template>
 
