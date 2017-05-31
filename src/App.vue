@@ -43,6 +43,7 @@ body {
   border: .0625em solid transparent;
   border-radius: .25em;
   display: inline-block;
+  cursor: pointer;
   font-size: 1em;
   font-weight: 400;
   line-height: 1.25;
@@ -63,5 +64,25 @@ body {
   background-color: #0275d8;
   border-color: #0275d8;
   color: #fff;
+}
+
+.btn-clear {
+  background: none;
+  color: #333;
+  font-size: 1.15em;
+
+  &:hover,
+  &:focus {
+    background: #eee;
+  }
+}
+
+.btn--fade {
+  opacity: .65;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
 }
 </style>
