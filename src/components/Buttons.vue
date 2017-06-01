@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     favorite() {
-      if (this.isFavorite) return 'favorite';
+      if (this.sharedStore.isFavorite) return 'favorite';
 
       return 'favorite_border';
     },
@@ -38,18 +38,10 @@ export default {
       }
 
       this.sharedStore.password = newPassword.join('');
-      this.isFavorite = false;
+      this.sharedStore.isFavorite = false;
     },
     addFavorite() {
-      let duplicate = false;
-      this.isFavorite = true;
-      if (this.isFavorite) {
-        this.sharedStore.favoritePasswords.forEach((password) => {
-          if (password === this.sharedStore.password) duplicate = true;
-        });
-
-        if (!duplicate) this.sharedStore.favoritePasswords.push(this.sharedStore.password);
-      }
+      store.addFavoritePassword(this.sharedStore.password);
     },
   },
   mounted() {

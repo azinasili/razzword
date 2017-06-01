@@ -7,6 +7,7 @@ export default {
     lowercase: false,
     numbers: false,
     symbols: false,
+    isFavorite: true,
     favoritePasswords: [],
     numberLength: 5,
     passwordBank: [],
@@ -28,6 +29,20 @@ export default {
         '/', '?',
       ],
     },
+  },
+  addFavoritePassword(password) {
+    if (this.debug) console.log('addFavoritePassword triggered with', password);
+
+    let duplicate = false;
+    this.state.isFavorite = true;
+
+    if (this.state.isFavorite) {
+      this.state.favoritePasswords.forEach((pw) => {
+        if (pw === password) duplicate = true;
+      });
+
+      if (!duplicate) this.state.favoritePasswords.push(password);
+    }
   },
   setPasswordLength(length) {
     if (this.debug) console.log('setPasswordLength triggered with', length);
