@@ -30,20 +30,6 @@ export default {
       ],
     },
   },
-  addFavoritePassword(password) {
-    if (this.debug) console.log('addFavoritePassword triggered with', password);
-
-    let duplicate = false;
-    this.state.isFavorite = true;
-
-    if (this.state.isFavorite) {
-      this.state.favoritePasswords.forEach((pw) => {
-        if (pw === password) duplicate = true;
-      });
-
-      if (!duplicate) this.state.favoritePasswords.push(password);
-    }
-  },
   setPasswordLength(length) {
     if (this.debug) console.log('setPasswordLength triggered with', length);
     this.state.passwordLength = length;
@@ -72,6 +58,33 @@ export default {
     if (this.state.symbols) {
       this.state.passwordBank =
         [...this.state.passwordBank, ...this.state.passwordCharacters.symbols];
+    }
+  },
+  createNewPassword(passwordBank) {
+    if (this.debug) console.log('createNewPassword triggered with', passwordBank);
+
+    const newPassword = [];
+
+    for (let i = 0; i < this.state.passwordLength; i += 1) {
+      const getCharacter = Math.floor(Math.random() * passwordBank.length);
+      newPassword.push(passwordBank[getCharacter]);
+    }
+
+    this.state.password = newPassword.join('');
+    this.state.isFavorite = false;
+  },
+  addFavoritePassword(password) {
+    if (this.debug) console.log('addFavoritePassword triggered with', password);
+
+    let duplicate = false;
+    this.state.isFavorite = true;
+
+    if (this.state.isFavorite) {
+      this.state.favoritePasswords.forEach((pw) => {
+        if (pw === password) duplicate = true;
+      });
+
+      if (!duplicate) this.state.favoritePasswords.push(password);
     }
   },
 };
