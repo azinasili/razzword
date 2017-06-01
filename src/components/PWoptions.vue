@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     buildArray() {
-      return store.newPasswordArray(this.sharedStore.passwordBank);
+      store.newPasswordArray(this.sharedStore.passwordBank);
     },
   },
   created() {
