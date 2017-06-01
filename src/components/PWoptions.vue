@@ -44,11 +44,13 @@ export default {
     newPasswordLength() {
       return store.setPasswordLength(this.sharedStore.passwordLength);
     },
+  },
+  methods: {
     buildArray() {
       return store.newPasswordArray(this.sharedStore.passwordBank);
     },
   },
-  beforeMount() {
+  created() {
     this.buildArray();
   },
 };
