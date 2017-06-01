@@ -54,7 +54,6 @@ export default {
   },
   mounted() {
     this.newPassword();
-    this.clipboard();
   },
 };
 </script>
