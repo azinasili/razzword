@@ -100,7 +100,7 @@ export default {
   }
 }
 
- .form-field--inline {
+.form-field--inline {
   display: inline-block;
   margin-right: .5em;
 
@@ -109,6 +109,7 @@ export default {
   }
 }
 
+// Fieldset container
 .form-advanced {
   background: rgba(255, 255, 255, .15);
   border-radius: .25em;
@@ -124,16 +125,20 @@ export default {
 }
 
 .form-fieldset-title {
+  color: #fff;
   font-size: 1.15em;
   font-weight: 700;
   margin-bottom: .5em;
 }
 
+// Force label and inputs to align vertically
 .form-label {
+  color: rgba(255, 255, 255, .85);
   display: inline-block;
   vertical-align: middle;
 }
 
+// Label variation
 .form-label--block {
   display: block;
   margin-bottom: .25em;
@@ -152,6 +157,7 @@ export default {
   }
 }
 
+// Hide native inputs while still being functional
 .form--hide {
   cursor: pointer;
   height: 100%;
@@ -172,11 +178,6 @@ export default {
   position: relative;
   vertical-align: middle;
   width: 1em;
-
-  &:focus,
-  &:hover {
-    background: #fff;
-  }
 }
 
 .form-button--radio {
@@ -186,6 +187,11 @@ export default {
 .form-native:focus + .form-button,
 .form-native:hover + .form-button {
   background: #fff;
+}
+
+// 1. Try to recreate focus ring
+.form-native:focus + .form-button {
+  box-shadow: 0 0 0 2px rgba(2, 117, 216, .5); // 1
 }
 
 .form-native:checked + .form-button {
