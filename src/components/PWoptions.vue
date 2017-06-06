@@ -112,7 +112,7 @@ export default {
 // Fieldset container
 .form-advanced {
   background: rgba(255, 255, 255, .15);
-  border-radius: .25em;
+  border-radius: .3em;
   font-size: .875em;
   margin-top: 1.25em;
   padding: 1em;
