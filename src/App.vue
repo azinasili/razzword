@@ -27,6 +27,7 @@ html { box-sizing: border-box; height: 100%; }
 body {
   background: #ff5f6d;
   background: radial-gradient(circle at 65% 100%, #ffc371, #ff5f6d);
+  color: rgb(119, 61, 66);
   font-family: 'Source Sans Pro', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -70,12 +71,11 @@ body {
 
 .btn-clear {
   background: none;
-  color: #333;
   font-size: 1.15em;
 
   &:hover,
   &:focus {
-    background: #eee;
+    background: rgba(255, 255, 255, .26);
   }
 }
 
