@@ -18,8 +18,7 @@ export default {
 <style lang="scss">
 .sidebar {
   color: #fff;
-  background: rgba(coral, .85);
-  padding: 1em;
+  padding: 1.25em;
 
   @media (max-width: ((740px/16px) * 1em)) {
     left: 0;
@@ -31,7 +30,7 @@ export default {
 
   @media (min-width: ((741px/16px) * 1em)) {
     order: -1;
-    width: ((320px/16px) * 1em);
+    width: ((360px/16px) * 1em);
   }
 }
 </style>

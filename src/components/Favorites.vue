@@ -62,8 +62,9 @@ export default {
 }
 
 .favorites-list {
-  border: .0625em solid #ddd;
-  border-radius: .25em;
+  background: linear-gradient(to bottom, transparent 25%, rgba(255, 255, 255, .15) 100%);
+  border-radius: .3em;
+  box-shadow: 0 5px 20px 0 rgba(97, 35, 41, .35);
   margin: 0;
   overflow-y: auto;
   padding: 0;
@@ -75,14 +76,12 @@ export default {
   font-size: .875em;
   list-style: none;
   padding: .55em 1em;
+  transition: all .175s ease-in-out;
 
   &:hover,
   &:focus {
-    background: #eee;
-  }
-
-  &:not(:last-child) {
-    border-bottom: inherit;
+    background: rgba(255, 255, 255, .26);
+    color: rgb(95, 47, 51);
   }
 }
 
@@ -99,7 +98,7 @@ export default {
 .favorites-button {
   background: none;
   border-radius: 50%;
-  color: #333;
+  color: inherit;
   font-size: 1.5em;
   height: 1.5em;
   opacity: 0;
