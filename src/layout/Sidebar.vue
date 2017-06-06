@@ -17,8 +17,6 @@ export default {
 
 <style lang="scss">
 .sidebar {
-  background: rgba(255, 255, 255, .15);
-  background: linear-gradient(to bottom, transparent 25%, rgba(255, 255, 255, .15) 100%);
   color: #fff;
   padding: 1.25em;
 
