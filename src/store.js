@@ -39,10 +39,14 @@ export default {
 
     const UPPERCASE = this.state.passwordCharacters.uppercase;
     const LOWERCASE = this.state.passwordCharacters.lowercase;
+    // const NUMBERS = this.state.passwordCharacters.numbers;
     const SPECIAL = this.state.passwordCharacters.symbols;
+
+    // const NUMBERS_ARRAY = [];
 
     this.state.passwordBank = this.state.passwordBank.filter(el => UPPERCASE.indexOf(el) === -1);
     this.state.passwordBank = this.state.passwordBank.filter(el => LOWERCASE.indexOf(el) === -1);
+    // this.state.passwordBank = this.state.passwordBank.filter(el => NUMBERS.indexOf(el) === -1);
     this.state.passwordBank = this.state.passwordBank.filter(el => SPECIAL.indexOf(el) === -1);
 
     if (this.state.uppercase) {
@@ -55,6 +59,16 @@ export default {
         [...this.state.passwordBank, ...this.state.passwordCharacters.lowercase];
     }
 
+    // if (this.state.numbers) {
+    //   for (let i = 0; i < this.state.numberLength; i += 1) {
+    //     const getCharacter = Math.floor(Math.random() * NUMBERS.length);
+    //     NUMBERS_ARRAY.push(NUMBERS[getCharacter]);
+    //   }
+
+    //   this.state.passwordBank =
+    //     [...this.state.passwordBank, ...NUMBERS_ARRAY];
+    // }
+
     if (this.state.symbols) {
       this.state.passwordBank =
         [...this.state.passwordBank, ...this.state.passwordCharacters.symbols];
@@ -65,7 +79,12 @@ export default {
 
     const newPassword = [];
 
-    for (let i = 0; i < this.state.passwordLength; i += 1) {
+    for (let i = 0; i < this.state.numberLength; i += 1) {
+      const getCharacter = Math.floor(Math.random() * this.state.passwordCharacters.numbers.length);
+      newPassword.push(this.state.passwordCharacters.numbers[getCharacter]);
+    }
+
+    for (let i = 0; i < (this.state.passwordLength - this.state.numberLength); i += 1) {
       const getCharacter = Math.floor(Math.random() * passwordBank.length);
       newPassword.push(passwordBank[getCharacter]);
     }
