@@ -27,7 +27,7 @@ html { box-sizing: border-box; height: 100%; }
 body {
   background: #ff5f6d;
   background: radial-gradient(circle at 65% 100%, #ffc371, #ff5f6d);
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
