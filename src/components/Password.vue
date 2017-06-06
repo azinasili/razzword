@@ -27,6 +27,10 @@ export default {
 <style lang="scss">
 .password {
   align-items: center;
+  background: linear-gradient(to bottom, transparent 25%, rgba(255, 255, 255, .15) 100%);
+  border-radius: .3em;
+  box-shadow: 0 5px 20px 0 rgba(97, 35, 41, .35);
+  color: white;
   display: flex;
   flex: 1 0 0%;
   flex-direction: column;
@@ -34,6 +38,17 @@ export default {
 }
 
 .password-content {
-  margin-bottom: 2em;
+  font-size: 5vw;
+  font-weight: 900;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  padding: 1em;
+  text-align: center;
+  word-break: break-all;
+  word-wrap: break-word;
+
+  @media (min-width: ((741px/16px) * 1em)) {
+    font-size: 1.5em;
+  }
 }
 </style>
