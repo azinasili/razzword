@@ -79,16 +79,24 @@ export default {
 
     const newPassword = [];
 
-    for (let i = 0; i < this.state.numberLength; i += 1) {
-      const getCharacter = Math.floor(Math.random() * this.state.passwordCharacters.numbers.length);
-      newPassword.push(this.state.passwordCharacters.numbers[getCharacter]);
+    let abc = 0;
+
+    if (this.state.numbers) {
+      abc = this.state.numberLength;
+
+      for (let i = 0; i < this.state.numberLength; i += 1) {
+        const getCharacter =
+          Math.floor(Math.random() * this.state.passwordCharacters.numbers.length);
+        newPassword.push(this.state.passwordCharacters.numbers[getCharacter]);
+      }
     }
 
-    for (let i = 0; i < (this.state.passwordLength - this.state.numberLength); i += 1) {
+    for (let i = 0; i < (this.state.passwordLength - abc); i += 1) {
       const getCharacter = Math.floor(Math.random() * passwordBank.length);
       newPassword.push(passwordBank[getCharacter]);
     }
 
+    this.state.password = this.arrShuffle(newPassword);
     this.state.password = newPassword.join('');
     this.state.isFavorite = false;
   },
@@ -105,5 +113,23 @@ export default {
 
       if (!duplicate) this.state.favoritePasswords.push(password);
     }
+  },
+  arrShuffle(array) {
+    const ARRAY = array;
+    let currentIndex = ARRAY.length;
+
+    // While there remain elements to shuffle...
+    while (currentIndex !== 0) {
+      // Pick a remaining element...
+      const RANDOM_INDEX = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      const TEMP_VALUE = ARRAY[currentIndex];
+      ARRAY[currentIndex] = ARRAY[RANDOM_INDEX];
+      ARRAY[RANDOM_INDEX] = TEMP_VALUE;
+    }
+
+    return ARRAY;
   },
 };
