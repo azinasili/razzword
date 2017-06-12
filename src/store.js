@@ -10,7 +10,10 @@ export default {
     isFavorite: true,
     favoritePasswords: [],
     numberLength: 5,
-    passwordBank: [],
+    passwordBank: {
+      numbers: [],
+      characters: [],
+    },
     passwordCharacters: {
       uppercase: [
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
@@ -39,38 +42,60 @@ export default {
 
     const UPPERCASE = this.state.passwordCharacters.uppercase;
     const LOWERCASE = this.state.passwordCharacters.lowercase;
+    const NUMBERS = this.state.passwordCharacters.numbers;
     const SPECIAL = this.state.passwordCharacters.symbols;
 
-    this.state.passwordBank = this.state.passwordBank.filter(el => UPPERCASE.indexOf(el) === -1);
-    this.state.passwordBank = this.state.passwordBank.filter(el => LOWERCASE.indexOf(el) === -1);
-    this.state.passwordBank = this.state.passwordBank.filter(el => SPECIAL.indexOf(el) === -1);
+    this.state.passwordBank.characters =
+      this.state.passwordBank.characters.filter(el => UPPERCASE.indexOf(el) === -1);
+    this.state.passwordBank.characters =
+      this.state.passwordBank.characters.filter(el => LOWERCASE.indexOf(el) === -1);
+    this.state.passwordBank.numbers =
+      this.state.passwordBank.numbers.filter(el => NUMBERS.indexOf(el) === -1);
+    this.state.passwordBank.characters =
+      this.state.passwordBank.characters.filter(el => SPECIAL.indexOf(el) === -1);
 
     if (this.state.uppercase) {
-      this.state.passwordBank =
-        [...this.state.passwordBank, ...this.state.passwordCharacters.uppercase];
+      this.state.passwordBank.characters =
+        [...this.state.passwordBank.characters, ...this.state.passwordCharacters.uppercase];
     }
 
     if (this.state.lowercase) {
-      this.state.passwordBank =
-        [...this.state.passwordBank, ...this.state.passwordCharacters.lowercase];
+      this.state.passwordBank.characters =
+        [...this.state.passwordBank.characters, ...this.state.passwordCharacters.lowercase];
+    }
+
+    if (this.state.numbers) {
+      this.state.passwordBank.numbers =
+        [...this.state.passwordBank.numbers, ...this.state.passwordCharacters.numbers];
     }
 
     if (this.state.symbols) {
-      this.state.passwordBank =
-        [...this.state.passwordBank, ...this.state.passwordCharacters.symbols];
+      this.state.passwordBank.characters =
+        [...this.state.passwordBank.characters, ...this.state.passwordCharacters.symbols];
     }
   },
   createNewPassword(passwordBank) {
     if (this.debug) console.log('createNewPassword triggered with', passwordBank);
 
-    const newPassword = [];
+    const NEW_PASSWORD = [];
+    let numbersLength = 0;
 
-    for (let i = 0; i < this.state.passwordLength; i += 1) {
-      const getCharacter = Math.floor(Math.random() * passwordBank.length);
-      newPassword.push(passwordBank[getCharacter]);
+    if (this.state.numbers) {
+      numbersLength = this.state.numberLength;
+
+      for (let i = 0; i < this.state.numberLength; i += 1) {
+        const getCharacter = Math.floor(Math.random() * passwordBank.numbers.length);
+        NEW_PASSWORD.push(passwordBank.numbers[getCharacter]);
+      }
     }
 
-    this.state.password = newPassword.join('');
+    for (let i = 0; i < (this.state.passwordLength - numbersLength); i += 1) {
+      const getCharacter = Math.floor(Math.random() * passwordBank.characters.length);
+      NEW_PASSWORD.push(passwordBank.characters[getCharacter]);
+    }
+
+    this.state.password = this.arrShuffle(NEW_PASSWORD);
+    this.state.password = NEW_PASSWORD.join('');
     this.state.isFavorite = false;
   },
   addFavoritePassword(password) {
@@ -86,5 +111,23 @@ export default {
 
       if (!duplicate) this.state.favoritePasswords.push(password);
     }
+  },
+  arrShuffle(array) {
+    const ARRAY = array;
+    let currentIndex = ARRAY.length;
+
+    // While there remain elements to shuffle...
+    while (currentIndex !== 0) {
+      // Pick a remaining element...
+      const RANDOM_INDEX = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      const TEMP_VALUE = ARRAY[currentIndex];
+      ARRAY[currentIndex] = ARRAY[RANDOM_INDEX];
+      ARRAY[RANDOM_INDEX] = TEMP_VALUE;
+    }
+
+    return ARRAY;
   },
 };
