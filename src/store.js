@@ -77,7 +77,7 @@ export default {
   createNewPassword(passwordBank) {
     if (this.debug) console.log('createNewPassword triggered with', passwordBank);
 
-    const newPassword = [];
+    const NEW_PASSWORD = [];
     let numbersLength = 0;
 
     if (this.state.numbers) {
@@ -85,17 +85,17 @@ export default {
 
       for (let i = 0; i < this.state.numberLength; i += 1) {
         const getCharacter = Math.floor(Math.random() * passwordBank.numbers.length);
-        newPassword.push(passwordBank.numbers[getCharacter]);
+        NEW_PASSWORD.push(passwordBank.numbers[getCharacter]);
       }
     }
 
     for (let i = 0; i < (this.state.passwordLength - numbersLength); i += 1) {
       const getCharacter = Math.floor(Math.random() * passwordBank.characters.length);
-      newPassword.push(passwordBank.characters[getCharacter]);
+      NEW_PASSWORD.push(passwordBank.characters[getCharacter]);
     }
 
-    this.state.password = this.arrShuffle(newPassword);
-    this.state.password = newPassword.join('');
+    this.state.password = this.arrShuffle(NEW_PASSWORD);
+    this.state.password = NEW_PASSWORD.join('');
     this.state.isFavorite = false;
   },
   addFavoritePassword(password) {
