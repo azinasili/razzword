@@ -10,7 +10,10 @@ export default {
     isFavorite: true,
     favoritePasswords: [],
     numberLength: 5,
-    passwordBank: [],
+    passwordBank: {
+      numbers: [],
+      characters: [],
+    },
     passwordCharacters: {
       uppercase: [
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
@@ -39,61 +42,56 @@ export default {
 
     const UPPERCASE = this.state.passwordCharacters.uppercase;
     const LOWERCASE = this.state.passwordCharacters.lowercase;
-    // const NUMBERS = this.state.passwordCharacters.numbers;
+    const NUMBERS = this.state.passwordCharacters.numbers;
     const SPECIAL = this.state.passwordCharacters.symbols;
 
-    // const NUMBERS_ARRAY = [];
-
-    this.state.passwordBank = this.state.passwordBank.filter(el => UPPERCASE.indexOf(el) === -1);
-    this.state.passwordBank = this.state.passwordBank.filter(el => LOWERCASE.indexOf(el) === -1);
-    // this.state.passwordBank = this.state.passwordBank.filter(el => NUMBERS.indexOf(el) === -1);
-    this.state.passwordBank = this.state.passwordBank.filter(el => SPECIAL.indexOf(el) === -1);
+    this.state.passwordBank.characters =
+      this.state.passwordBank.characters.filter(el => UPPERCASE.indexOf(el) === -1);
+    this.state.passwordBank.characters =
+      this.state.passwordBank.characters.filter(el => LOWERCASE.indexOf(el) === -1);
+    this.state.passwordBank.numbers =
+      this.state.passwordBank.numbers.filter(el => NUMBERS.indexOf(el) === -1);
+    this.state.passwordBank.characters =
+      this.state.passwordBank.characters.filter(el => SPECIAL.indexOf(el) === -1);
 
     if (this.state.uppercase) {
-      this.state.passwordBank =
-        [...this.state.passwordBank, ...this.state.passwordCharacters.uppercase];
+      this.state.passwordBank.characters =
+        [...this.state.passwordBank.characters, ...this.state.passwordCharacters.uppercase];
     }
 
     if (this.state.lowercase) {
-      this.state.passwordBank =
-        [...this.state.passwordBank, ...this.state.passwordCharacters.lowercase];
+      this.state.passwordBank.characters =
+        [...this.state.passwordBank.characters, ...this.state.passwordCharacters.lowercase];
     }
 
-    // if (this.state.numbers) {
-    //   for (let i = 0; i < this.state.numberLength; i += 1) {
-    //     const getCharacter = Math.floor(Math.random() * NUMBERS.length);
-    //     NUMBERS_ARRAY.push(NUMBERS[getCharacter]);
-    //   }
-
-    //   this.state.passwordBank =
-    //     [...this.state.passwordBank, ...NUMBERS_ARRAY];
-    // }
+    if (this.state.numbers) {
+      this.state.passwordBank.numbers =
+        [...this.state.passwordBank.numbers, ...this.state.passwordCharacters.numbers];
+    }
 
     if (this.state.symbols) {
-      this.state.passwordBank =
-        [...this.state.passwordBank, ...this.state.passwordCharacters.symbols];
+      this.state.passwordBank.characters =
+        [...this.state.passwordBank.characters, ...this.state.passwordCharacters.symbols];
     }
   },
   createNewPassword(passwordBank) {
     if (this.debug) console.log('createNewPassword triggered with', passwordBank);
 
     const newPassword = [];
-
-    let abc = 0;
+    let numbersLength = 0;
 
     if (this.state.numbers) {
-      abc = this.state.numberLength;
+      numbersLength = this.state.numberLength;
 
       for (let i = 0; i < this.state.numberLength; i += 1) {
-        const getCharacter =
-          Math.floor(Math.random() * this.state.passwordCharacters.numbers.length);
-        newPassword.push(this.state.passwordCharacters.numbers[getCharacter]);
+        const getCharacter = Math.floor(Math.random() * passwordBank.numbers.length);
+        newPassword.push(passwordBank.numbers[getCharacter]);
       }
     }
 
-    for (let i = 0; i < (this.state.passwordLength - abc); i += 1) {
-      const getCharacter = Math.floor(Math.random() * passwordBank.length);
-      newPassword.push(passwordBank[getCharacter]);
+    for (let i = 0; i < (this.state.passwordLength - numbersLength); i += 1) {
+      const getCharacter = Math.floor(Math.random() * passwordBank.characters.length);
+      newPassword.push(passwordBank.characters[getCharacter]);
     }
 
     this.state.password = this.arrShuffle(newPassword);
