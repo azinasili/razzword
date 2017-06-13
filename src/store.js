@@ -119,6 +119,10 @@ export default {
       }
     }
   },
+  deleteFavoritePassword(index) {
+    if (this.debug) console.log('deleteFavoritePassword triggered with', index);
+    this.state.favoritePasswords.splice(index, 1);
+  },
   arrShuffle(array) {
     const ARRAY = array;
     let currentIndex = ARRAY.length;
