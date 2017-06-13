@@ -1,8 +1,12 @@
-# pw-generator
+# Razzword
 
-> Generate and store random passwords.
+> Simple and beautiful password generator.
 
-## Build Setup
+![razzword screenshot](http://i.imgur.com/UpYNjnM.png)
+
+Razzword is a pet project for generating random passwords. At the moment Razzword does not offer any security so please use at your own risk. With that said, the project is also a work in progress so there maybe missing features and bugs.
+
+## Project Setup
 
 ``` bash
 # install dependencies
@@ -23,5 +27,7 @@ npm run unit
 # run all tests
 npm test
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## TODO
+- Make options accessible on mobile
+- Have favorites be persistant
+- Be able to unfavorite a password
