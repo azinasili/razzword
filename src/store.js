@@ -8,6 +8,7 @@ export default {
     numbers: false,
     symbols: false,
     isFavorite: true,
+    favoriteAmount: 10,
     favoritePasswords: [],
     numberLength: 5,
     passwordBank: {
@@ -109,8 +110,18 @@ export default {
         if (pw === password) duplicate = true;
       });
 
-      if (!duplicate) this.state.favoritePasswords.push(password);
+      if (!duplicate) {
+        if (this.state.favoritePasswords.length >= this.state.favoriteAmount) {
+          this.state.favoritePasswords.pop();
+        }
+
+        this.state.favoritePasswords.unshift(password);
+      }
     }
+  },
+  deleteFavoritePassword(index) {
+    if (this.debug) console.log('deleteFavoritePassword triggered with', index);
+    this.state.favoritePasswords.splice(index, 1);
   },
   arrShuffle(array) {
     const ARRAY = array;

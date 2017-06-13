@@ -5,11 +5,11 @@
     <p>No favorites have been saved yet 😉</p>
   </div>
   <ul v-if="showHistory" class="favorites-list">
-    <li v-for="password in sharedStore.favoritePasswords" class="favorites-item">
+    <li v-for="(password, index) in sharedStore.favoritePasswords" class="favorites-item">
       <span class="js-favorite-password">{{password}}</span>
       <div class="favorites-buttons">
         <button class="btn favorites-button js-favorite-copy"><i class="material-icons">content_copy</i></button>
-        <button class="btn favorites-button favorites-button--danger"><i class="material-icons">delete</i></button>
+        <button v-on:click="deleteFavorite(index)" class="btn favorites-button favorites-button--danger"><i class="material-icons">delete</i></button>
       </div>
     </li>
   </ul>
@@ -38,6 +38,11 @@ export default {
       }
 
       return this.isFavoritesShown;
+    },
+  },
+  methods: {
+    deleteFavorite(index) {
+      store.deleteFavoritePassword(index);
     },
   },
 };
