@@ -28,6 +28,5 @@ npm run unit
 npm test
 ```
 ## TODO
-- Make options accessible on mobile
 - Have favorites be persistant
 - Be able to unfavorite a password
