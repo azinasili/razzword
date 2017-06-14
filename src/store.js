@@ -7,6 +7,7 @@ export default {
     lowercase: false,
     numbers: false,
     symbols: false,
+    isDrawerOpen: false,
     isFavorite: true,
     favoriteAmount: 10,
     favoritePasswords: [],
