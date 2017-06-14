@@ -2,7 +2,7 @@
 
 > Simple and beautiful password generator.
 
-![razzword screenshot](http://i.imgur.com/UpYNjnM.png)
+![Razzword](http://i.imgur.com/EVDR8NN.png)
 
 Razzword is a pet project for generating random passwords. At the moment Razzword does not offer any security so please use at your own risk. With that said, the project is also a work in progress so there maybe missing features and bugs.
 
