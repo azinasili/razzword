@@ -1,8 +1,10 @@
 <template>
 <div id="app" class="app">
-  <!--<titlebar></titlebar>-->
-  <pw-content></pw-content>
-  <sidebar></sidebar>
+  <titlebar></titlebar>
+  <main class="app-body">
+    <pw-content></pw-content>
+    <sidebar></sidebar>
+  </main>
 </div>
 </template>
 
@@ -36,10 +38,15 @@ body {
 }
 
 .app {
-  align-content: flex-start;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   height: 100vh;
+}
+
+.app-body {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
 }
 
 .btn {
