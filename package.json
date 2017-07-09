@@ -1,6 +1,6 @@
 {
   "name": "razzword",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Generate and store random passwords.",
   "author": "Azin Asili <hello@azinasili.com>",
   "private": true,
