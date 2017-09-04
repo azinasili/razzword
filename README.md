@@ -2,7 +2,7 @@
 
 > Simple and beautiful password generator.
 
-[LIVE DEMO](razzword.surge.sh)
+[LIVE DEMO](http://razzword.surge.sh/)
 
 ![Razzword](http://i.imgur.com/EVDR8NN.png)
 
